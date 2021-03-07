@@ -20,4 +20,5 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.on('/').render('welcome')
+Route.on('/').render('auth/register')
+Route.post('/auth/register', 'Auth/RegisterController.store').as('register')
