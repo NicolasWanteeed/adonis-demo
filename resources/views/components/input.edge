@@ -1,0 +1,17 @@
+@set('hasError', flashMessages.has(`errors.${name}`))
+
+{{-- LABEL --}}
+<label
+  for="{{ name }}_field"
+  class="block text-sm font-medium text-gray-700"
+>{{ label || name }}</label>
+{{-- INPUT --}}
+<input
+  type="{{ type || 'text' }}"
+  name="{{ name }}"
+  id="{{ name }}_field"
+  value="{{ flashMessages.get(name) || '' }}"
+  class="mt-2 px-2 py-1 w-full rounded bg-gray-100 focus:outline-none focus:bg-white border {{ hasError ? 'border-red-500' : 'border-transparent' }} focus:border-indigo-500">
+@if(hasError)
+  <p class="mt-1 text-xs text-red-500">{{ flashMessages.get(`errors.${name}`) }}</p>
+@endif
